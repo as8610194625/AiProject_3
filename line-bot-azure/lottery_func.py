@@ -140,7 +140,11 @@ def main(scan,subscription_key,endpoint):
     # scan= scand
     str1=scanlottery(subscription_key,endpoint,img=scan)
     lotteryNo=re.findall('#\d{9}',str1)[0][1:]   #大樂透第N期
+    if lotteryNo == []:
+        return '大樂透還沒開獎喔~\n讓我們一起集氣'
     mylist = re_tolist(str1)    # Regular Expression取玩家大樂透號碼
+    if mylist == []:
+        return '大樂透無法辨識，請在試拍一次'
     soup= getsoup(lotteryNo)       # 取大樂透網站的soup
     win_number=winning_numbers(soup)  # 大樂透中獎號碼
     result=''
