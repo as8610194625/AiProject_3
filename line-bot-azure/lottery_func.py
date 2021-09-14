@@ -144,6 +144,14 @@ def getmoney(soup,x):
 def main(scan,subscription_key,endpoint):
 
     str1=scanlottery(subscription_key,endpoint,img=scan)
+<<<<<<< HEAD
+    lotteryNo=re.findall('#\d{9}',str1)[0][1:]   #大樂透第N期
+    if lotteryNo == []:
+        return '大樂透還沒開獎喔~\n讓我們一起集氣'
+    mylist = re_tolist(str1)    # Regular Expression取玩家大樂透號碼
+    if mylist == []:
+        return '大樂透無法辨識，請在試拍一次'
+=======
     try:
         lotteryNo=re.findall('#\d{9}',str1)[0][1:]   #大樂透第N期
     except:    
@@ -153,6 +161,7 @@ def main(scan,subscription_key,endpoint):
     if mylist=='No number!':
         return '大樂透無法辨識，試試看再拍進一點～'
 
+>>>>>>> aecb797841c21692f04151958ce012b0c94fd44c
     soup= getsoup(lotteryNo)       # 取大樂透網站的soup
     try:
         win_number=winning_numbers(soup)  # 大樂透中獎號碼
